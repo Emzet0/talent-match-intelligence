@@ -1,5 +1,5 @@
 # AI Talent Navigator 🎯
-*(Replace the link above with your actual deployed app URL after deployment)*
+https://talent-match-intelligence-d7sc9mwbyykssrbshijpha.streamlit.app/
 
 An interactive web application built with **Streamlit** that leverages a dynamic SQL matching engine and **Google's Generative AI** to identify and analyze internal talent.  
 This tool empowers HR and hiring managers to make **data-driven decisions** by matching employees against ideal job profiles in real-time.
