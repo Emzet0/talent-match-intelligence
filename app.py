@@ -57,7 +57,7 @@ def run_talent_query(_conn, benchmark_ids_tuple):
 @st.cache_data
 def generate_ai_profile(role_name, job_level, role_purpose):
     # Generates the job profile using the Gemini API. Cached to prevent re-running.
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     prompt = f"""
     Act as a professional HR recruitment specialist. Based on the following job details, generate a concise and structured AI-Generated Job Profile.
     The output must include exactly these three sections (use these headers exactly):
@@ -90,7 +90,7 @@ def generate_ai_summary(candidate_info_tuple, tgv_scores_tuple, role_name):
     candidate_info = dict(candidate_info_tuple)
     tgv_scores = pd.DataFrame(list(tgv_scores_tuple))
 
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     prompt = f"""
     Act as a senior talent analyst. You are given data for a candidate being evaluated for the **{role_name}** role.
     Provide a concise, data-driven summary (2-3 sentences) explaining why this candidate is a strong or weak fit.
@@ -234,3 +234,4 @@ if st.session_state.analysis_run and not st.session_state.ranked_list.empty:
         fig_hist = px.histogram(ranked_list, x="final_match_rate", nbins=20, title="Distribution Across All Candidates")
         fig_hist.add_vline(x=candidate_info['final_match_rate'], line_width=3, line_dash="dash", line_color="red", annotation_text="Selected Candidate", annotation_position="top left")
         st.plotly_chart(fig_hist, use_container_width=True)
+
